@@ -35,7 +35,7 @@ aside a {
 }
 
 .container {
-    width: 1260px;
+    width: 1190px;
     height: 1782px;
     position: relative;
 }
@@ -44,7 +44,7 @@ aside a {
     position: absolute;
     top: 0;
     bottom: 0;
-    width: 450px;
+    width: 380px;
     padding: 25px;
     background: #00bfa5;
     color: #fff;
@@ -67,6 +67,7 @@ aside a {
     display: block;
     margin: 0 auto 15px;
     width: 150px;
+    border-radius: 50%;
 }
 
 h1 {
@@ -154,10 +155,10 @@ h2 {
 
 .main {
     position: relative;
-    left: 450px;
+    left: 380px;
     width: 810px;
     height: 1782px;
-    padding: 15px 20px 0;
+    padding: 30px 20px 0;
     background: #f0f2f1;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -256,4 +257,9 @@ h5 {
 .efe .task4img img {
     height: 73px;
     width: inherit;
+}
+.exp span{
+    color:#00796b;
+    font-size:18px;
+    line-height: 36px;
 }
