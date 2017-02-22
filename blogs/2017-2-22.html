@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../plugins/jquery/js/jquery-1.12.0.min.js"></script>
+    <style>
+        .container-1{
+            overflow: auto;
+        }
+        .paper{
+            width: 100px;
+            height: 100px;
+            margin-right: 20px;
+            float:left;
+        }
+        .paper1{
+            background-color: #95D127;
+        }
+        .paper2{
+            background-color: #0000cc;
+        }
+        .bac{
+            width:100px;
+            height: 100px;
+            float:left;
+            position: relative;
+            background-color: #f0ad4e;
+            margin-right: 20px;
+        }
+        .corner{
+            /*position: absolute;
+            right: 0;
+            bottom: 0;
+           */
+            width: 50px;
+            height: 25px;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+        }
+        .cor-left{
+           /* border-width: 0 0 25px 25px;
+            width: 0px;
+            height: 0px;
+            border-style: solid;
+            border-color: transparent transparent #999 transparent;
+            opacity: 0.6;
+            float: left;
+            z-index: 10;*/
+            width:0;
+            height:0;
+            float:left;
+            border-bottom: 25px solid #999;
+            border-left: 25px solid transparent;
+            opacity: 0.6;
+        }
+        .cor-mid{
+            width: 0;
+            height: 0;
+            /*border-bottom: 25px solid #fff;
+            border-left: 25px solid transparent;*/
+            float: left;
+            border-top: 25px solid #fff;
+            border-right: 25px solid transparent;
+            opacity: 0.6;
+        }
+        .cor-right{
+           /* border-width: 25px 25px 0 0;
+            left: 25px;
+            top: -25px;
+            width: 0px;
+            height: 0px;
+            border-style: solid;
+            border-color: #fff transparent transparent transparent;
+            position: relative;
+            opacity: 0.6;
+            float: left;
+            z-index: 10;*/
+            position: relative;
+            left: 25px;
+            bottom:0;
+            width: 0px;
+            height: 0px;
+            border-bottom: 25px solid #fff;
+            border-left: 25px solid transparent;
+        }
+        .tran1{
+            width: 0;
+            height:0;
+            border-top: 50px solid #ff0000;
+            border-right: 50px solid #78FA89;
+            border-bottom: 50px solid #6666cc;
+            border-left: 50px solid #c09853;
+            float: left;
+            margin-right: 10px;
+        }
+        .container-2 div{
+            float:left;
+            width:0;
+            height:0;
+        }
+        .container-2 .trangle1{
+            border-left: 25px solid transparent;
+            border-right: 25px solid transparent;
+            border-bottom: 25px solid red;
+        }
+    </style>
+</head>
+<body>
+<div class="container-1">
+    <div class="paper paper1"></div>
+    <div class="paper paper2"></div>
+    <div class="bac">
+        <div class="corner">
+            <div class="cor-left"></div>
+            <div class="cor-mid"></div>
+            <div class="cor-right"></div>
+        </div>
+    </div>
+    <div class="tran1"></div>
+</div>
+<div class="container-2">
+    <div class="trangle1">
+    </div>
+</div>
+
+<script>
+    (function($) {
+        $.fn.jCorner = function(options) {
+            return this.each(function() {
+                console.log($(this).index())
+                var settings = $.extend({
+                    size: 40,
+                    id: undefined,
+                    link: undefined,
+                    background: '#fff'
+                }, options);
+                console.log(settings)
+
+                var id = settings.id === undefined ? '' : ' id="'
+                + settings.id + '"';
+                var a_start = settings.link === undefined ? '' : '<a href="'
+                + settings.link + '" target="_blank">';
+                var a_end = settings.link === undefined ? '' : '</a>';
+                var element = '<div' + id + ' class="jCorner" style="width: '
+                        + settings.size * 2 + 'px; height: ' + settings.size
+                        + 'px; position: absolute; bottom: 0; right: 0;">' + a_start
+                        + '<div class="jCorner_left" style="border-width: 0 0 '
+                        + settings.size + 'px ' + settings.size
+                        + 'px; width: 0px; height: 0px; border-style: solid; '
+                        + 'border-color: transparent transparent #999 transparent; '
+                        + 'opacity: 0.6; float: left; z-index: 10;"></div>'
+                        + '<div class="jCorner_square" style="border-width: 0 0 '
+                        + settings.size + 'px ' + settings.size
+                        + 'px; border-color: transparent transparent '
+                        + settings.background
+                        + ' transparent; width: 0px; height: 0px; '
+                        + 'border-style: solid; float: left;"></div>'
+                        + '<div class="jCorner_right" '
+                        + 'style="border-width: ' + settings.size + 'px '
+                        + settings.size + 'px 0 0; left: ' + settings.size
+                        + 'px; top: -' + settings.size + 'px; width: 0px; '
+                        + 'height: 0px; border-style: solid; '
+                        + 'border-color: #fff transparent transparent transparent; '
+                        + 'position: relative; opacity: 0.6; float: left; '
+                        + 'z-index: 10;"></div>'
+                        + a_end;
+
+                return $(this).append(element).css('position', 'relative');
+            });
+        }
+    }(jQuery));
+
+    $('.paper').jCorner({
+        size: 40,
+        link:"19.doctype.html",
+        background: '#fff'
+    });
+
+
+</script>
+</body>
+</html>
